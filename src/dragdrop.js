@@ -265,7 +265,7 @@ var Draggable = Class.create({
     this.element = $(element);
 
     if(options.handle && Object.isString(options.handle))
-      this.handle = this.element.down('.'+options.handle, 0);
+      this.handle = this.element.down(options.handle, 0);
 
     if(!this.handle) this.handle = $(options.handle);
     if(!this.handle) this.handle = this.element;
@@ -713,7 +713,7 @@ var Sortable = {
 
     (options.elements || this.findElements(element, options) || []).each( function(e,i) {
       var handle = options.handles ? $(options.handles[i]) :
-        (options.handle ? $(e).select('.' + options.handle)[0] : e);
+        (options.handle ? $(e).select(options.handle)[0] : e);
       options.draggables.push(
         new Draggable(e, Object.extend(options_for_draggable, { handle: handle })));
       Droppables.add(e, options_for_droppable);
